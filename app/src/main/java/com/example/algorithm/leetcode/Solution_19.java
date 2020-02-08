@@ -18,6 +18,8 @@ package com.example.algorithm.leetcode;
 // Could you do this in one pass?
 // Related Topics Linked List Two Pointers
 
+import com.example.algorithm.structure.ListNode;
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -52,13 +54,5 @@ public class Solution_19 {
         }
         second.next = second.next.next;
         return dummy.next;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

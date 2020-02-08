@@ -23,6 +23,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Tree Breadth-first Search
 
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -112,15 +114,5 @@ public class Solution_102 {
         }
         result.add(list);
         recursive_3(queue);
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

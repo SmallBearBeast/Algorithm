@@ -14,6 +14,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Linked List Divide and Conquer Heap
 
+import com.example.algorithm.structure.ListNode;
+
 public class Solution_23 {
     public static void main(String[] args) {
         Solution_23 solution_3 = new Solution_23();
@@ -114,14 +116,4 @@ public class Solution_23 {
             node.next = merge;
         }
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
 }

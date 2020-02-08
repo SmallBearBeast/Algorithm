@@ -23,10 +23,13 @@ package com.example.algorithm.leetcode;
 //rotate 4 steps to the right: 2->0->1->NULL
 // Related Topics Linked List Two Pointers
 
+import com.example.algorithm.structure.ListNode;
+import com.example.algorithm.structure.SolutionUtil;
+
 public class Solution_61 {
     public static void main(String[] args) {
         Solution_61 solution = new Solution_61();
-        ListNode link = solution.createLink(new int[]{
+        ListNode link = SolutionUtil.createLink(new int[]{
                 1,
         });
         solution.mySolution(link, 2 + 5 + 5);
@@ -56,24 +59,5 @@ public class Solution_61 {
         ListNode res = end.next;
         end.next = null;
         return res;
-    }
-
-    public ListNode createLink(int[] datas) {
-        ListNode head = new ListNode(0);
-        ListNode temp = head;
-        for (int i = 0; i < datas.length; i++) {
-            temp.next = new ListNode(datas[i]);
-            temp = temp.next;
-        }
-        return head.next;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

@@ -16,10 +16,13 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Linked List
 
+import com.example.algorithm.structure.ListNode;
+import com.example.algorithm.structure.SolutionUtil;
+
 public class Solution_82 {
     public static void main(String[] args) {
         Solution_82 solution = new Solution_82();
-        ListNode link = solution.createLink(new int[]{
+        ListNode link = SolutionUtil.createLink(new int[]{
                 1, 2, 3, 3, 4, 4, 5
         });
         solution.mySolution(link);
@@ -48,24 +51,5 @@ public class Solution_82 {
             head = head.next;
         }
         return res.next;
-    }
-
-    public ListNode createLink(int[] datas) {
-        ListNode head = new ListNode(0);
-        ListNode temp = head;
-        for (int i = 0; i < datas.length; i++) {
-            temp.next = new ListNode(datas[i]);
-            temp = temp.next;
-        }
-        return head.next;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

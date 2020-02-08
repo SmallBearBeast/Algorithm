@@ -12,14 +12,7 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Linked List
 
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- * int val;
- * ListNode next;
- * ListNode(int x) { val = x; }
- * }
- */
+import com.example.algorithm.structure.ListNode;
 
 public class Solution_24 {
     public static void main(String[] args) {
@@ -55,13 +48,5 @@ public class Solution_24 {
             end = start == null ? null : start.next;
         }
         return head.next;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

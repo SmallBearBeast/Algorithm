@@ -31,9 +31,10 @@ import java.util.List;
 public class Solution_54 {
     public static void main(String[] args) {
         Solution_54 solution = new Solution_54();
-        List<Integer> result = solution.mySolution(new int[][]{
+        List<Integer> result = solution.mySolution_2(new int[][]{
                 {1, 2, 3, 4},
                 {5, 6, 7, 8},
+                {9, 10, 11, 12},
 
         });
         result = null;
@@ -43,7 +44,7 @@ public class Solution_54 {
         return null;
     }
 
-    public List<Integer> mySolution(int[][] matrix) {
+    public List<Integer> mySolution_1(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {
             return new ArrayList<>();
         }
@@ -80,5 +81,37 @@ public class Solution_54 {
         for (int i = matrix.length - 1 - level; i > level; i--) {
             result.add(matrix[i][level]);
         }
+    }
+
+    public List<Integer> mySolution_2(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) {
+            return new ArrayList<>();
+        }
+        List<Integer> result = new ArrayList<>();
+        int l = 0, r = matrix[0].length - 1, t = 0, b = matrix.length - 1;
+        int num = 0, tar = matrix.length * matrix[0].length;
+        while (num < tar) {
+            for (int i = l; i <= r && num < tar; i++) {
+                result.add(matrix[t][i]);
+                num++; // left to right.
+            }
+            t++;
+            for (int i = t; i <= b && num < tar; i++) {
+                result.add(matrix[i][r]);
+                num++; // top to bottom.
+            }
+            r--;
+            for (int i = r; i >= l && num < tar; i--) {
+                result.add(matrix[b][i]);
+                num++; // right to left.
+            }
+            b--;
+            for (int i = b; i >= t && num < tar; i--) {
+                result.add(matrix[i][l]);
+                num++; // bottom to top.
+            }
+            l++;
+        }
+        return result;
     }
 }

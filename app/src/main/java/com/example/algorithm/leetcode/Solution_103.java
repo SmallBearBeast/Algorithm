@@ -23,6 +23,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Stack Tree Breadth-first Search
 
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -77,15 +79,4 @@ public class Solution_103 {
         }
         return result;
     }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
 }

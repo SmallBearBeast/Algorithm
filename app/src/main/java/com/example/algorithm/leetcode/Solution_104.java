@@ -19,6 +19,8 @@ package com.example.algorithm.leetcode;
 // return its depth = 3.
 // Related Topics Tree Depth-first Search
 
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -59,41 +61,5 @@ public class Solution_104 {
             result ++;
         }
         return result;
-    }
-
-    public TreeNode createTree(Integer[] nodes) {
-        int index = 0;
-        TreeNode root = new TreeNode(nodes[index]);
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.addLast(root);
-        while (index < nodes.length - 1) {
-            TreeNode node = queue.removeFirst();
-            if (nodes[index + 1] != null) {
-                TreeNode left = new TreeNode(nodes[index + 1]);
-                node.left = left;
-                queue.addLast(left);
-            } else {
-                queue.addLast(null);
-            }
-            if (nodes[index + 2] != null) {
-                TreeNode right = new TreeNode(nodes[index + 2]);
-                node.right = right;
-                queue.addLast(right);
-            } else {
-                queue.addLast(null);
-            }
-            index = index + 2;
-        }
-        return root;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

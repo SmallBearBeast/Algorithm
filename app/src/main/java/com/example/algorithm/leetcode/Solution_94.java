@@ -19,26 +19,18 @@ package com.example.algorithm.leetcode;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
+import com.example.algorithm.structure.SolutionUtil;
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- * int val;
- * TreeNode left;
- * TreeNode right;
- * TreeNode(int x) { val = x; }
- * }
- */
-
-
 public class Solution_94 {
     public static void main(String[] args) {
         Solution_94 solution = new Solution_94();
-        TreeNode root = solution.createTree(new Integer[] {
+        TreeNode root = SolutionUtil.createTree(new Integer[] {
                 1,
                 2, 3,
                 4, 5, 6, 7,
@@ -219,43 +211,5 @@ public class Solution_94 {
             }
         }
         return result;
-    }
-
-
-
-    public TreeNode createTree(Integer[] nodes) {
-        int index = 0;
-        TreeNode root = new TreeNode(nodes[index]);
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.addLast(root);
-        while (index < nodes.length - 1) {
-            TreeNode node = queue.removeFirst();
-            if (nodes[index + 1] != null) {
-                TreeNode left = new TreeNode(nodes[index + 1]);
-                node.left = left;
-                queue.addLast(left);
-            } else {
-                queue.addLast(null);
-            }
-            if (nodes[index + 2] != null) {
-                TreeNode right = new TreeNode(nodes[index + 2]);
-                node.right = right;
-                queue.addLast(right);
-            } else {
-                queue.addLast(null);
-            }
-            index = index + 2;
-        }
-        return root;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

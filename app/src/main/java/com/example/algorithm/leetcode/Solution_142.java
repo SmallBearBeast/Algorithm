@@ -43,6 +43,8 @@ package com.example.algorithm.leetcode;
 //Can you solve it without using extra space?
 // Related Topics Linked List Two Pointers
 
+import com.example.algorithm.structure.ListNode;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -110,15 +112,5 @@ public class Solution_142 {
             head = next;
         }
         return null;
-    }
-
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 }

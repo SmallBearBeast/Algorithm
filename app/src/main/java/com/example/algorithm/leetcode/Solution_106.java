@@ -21,6 +21,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Array Tree Depth-first Search
 
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,14 +59,4 @@ public class Solution_106 {
         return root;
     }
 
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }

@@ -1,20 +1,20 @@
 package com.example.algorithm.leetcode;
-//Given a sorted linked list, delete all duplicates such that each element appear only once.
+
+//给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
 //
-// Example 1:
+// 示例 1:
 //
-//
-//Input: 1->1->2
-//Output: 1->2
-//
-//
-// Example 2:
+// 输入: 1->1->2
+//输出: 1->2
 //
 //
-//Input: 1->1->2->3->3
-//Output: 1->2->3
+// 示例 2:
 //
-// Related Topics Linked List
+// 输入: 1->1->2->3->3
+//输出: 1->2->3
+// Related Topics 链表
+
+import com.example.algorithm.structure.ListNode;
 
 public class Solution_83 {
     public static void main(String[] args) {
@@ -42,14 +42,4 @@ public class Solution_83 {
         }
         return res;
     }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
 }

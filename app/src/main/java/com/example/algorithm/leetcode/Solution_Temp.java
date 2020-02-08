@@ -1,11 +1,21 @@
 package com.example.algorithm.leetcode;
 
+import com.example.algorithm.structure.TreeNode;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
+
 
 public class Solution_Temp {
     public static void main(String[] args) {
         Solution_Temp solution = new Solution_Temp();
+        List<Integer> list = new ArrayList<>();
+        list.addAll(Arrays.asList(1, 2, 3, 4, 5));
+        list.addAll(list.size(), Arrays.asList(6, 7, 8));
+        list.add(9);
     }
 
     public int climbStairs(int n) {
@@ -57,37 +67,5 @@ public class Solution_Temp {
             return queue_1.isEmpty() && queue_2.isEmpty();
         }
         return false;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-    public TreeNode createTree(Integer[] nodes) {
-        int index = 0;
-        TreeNode root = new TreeNode(nodes[index]);
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.addLast(root);
-        while (index < nodes.length - 1) {
-            TreeNode node = queue.removeFirst();
-            if (nodes[index + 1] != null) {
-                TreeNode left = new TreeNode(nodes[index + 1]);
-                node.left = left;
-                queue.addLast(left);
-            }
-            if (nodes[index + 2] != null) {
-                TreeNode right = new TreeNode(nodes[index + 2]);
-                node.right = right;
-                queue.addLast(right);
-            }
-            index = index + 2;
-        }
-        return root;
     }
 }

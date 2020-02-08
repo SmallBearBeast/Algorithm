@@ -28,13 +28,15 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Tree Depth-first Search
 
-import java.util.LinkedList;
+import com.example.algorithm.structure.SolutionUtil;
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.Stack;
 
 public class Solution_114 {
     public static void main(String[] args) {
         Solution_114 solution = new Solution_114();
-        TreeNode root = solution.createTree(new Integer[] {
+        TreeNode root = SolutionUtil.createTree(new Integer[] {
                 1,
                 2, 5,
 //                3, 4, null, 6
@@ -118,7 +120,7 @@ public class Solution_114 {
 
 
     private TreeNode pre = null;
-    // 后续遍历递归实现（也不叫后序遍历吧）
+    // 后续遍历递归实现（也叫后序遍历吧）
     public void mySolution_4(TreeNode root) {
         if (root == null)
             return;
@@ -127,41 +129,5 @@ public class Solution_114 {
         root.right = pre;
         root.left = null;
         pre = root;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-    public TreeNode createTree(Integer[] nodes) {
-        int index = 0;
-        TreeNode root = new TreeNode(nodes[index]);
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.addLast(root);
-        while (index < nodes.length - 1) {
-            TreeNode node = queue.removeFirst();
-            if (nodes[index + 1] != null) {
-                TreeNode left = new TreeNode(nodes[index + 1]);
-                node.left = left;
-                queue.addLast(left);
-            } else {
-                queue.addLast(null);
-            }
-            if (nodes[index + 2] != null) {
-                TreeNode right = new TreeNode(nodes[index + 2]);
-                node.right = right;
-                queue.addLast(right);
-            } else {
-                queue.addLast(null);
-            }
-            index = index + 2;
-        }
-        return root;
     }
 }

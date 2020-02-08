@@ -1,37 +1,28 @@
 package com.example.algorithm.leetcode;
-//Given a string, find the length of the longest substring without repeating characters.
+//给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+//
+// 示例 1:
+//
+// 输入: "abcabcbb"
+//输出: 3
+//解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
 //
 //
-// Example 1:
+// 示例 2:
+//
+// 输入: "bbbbb"
+//输出: 1
+//解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
 //
 //
-//Input: "abcabcbb"
-//Output: 3
-//Explanation: The answer is "abc", with the length of 3.
+// 示例 3:
 //
+// 输入: "pwwkew"
+//输出: 3
+//解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+//     请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
 //
-//
-// Example 2:
-//
-//
-//Input: "bbbbb"
-//Output: 1
-//Explanation: The answer is "b", with the length of 1.
-//
-//
-//
-// Example 3:
-//
-//
-//Input: "pwwkew"
-//Output: 3
-//Explanation: The answer is "wke", with the length of 3.
-//             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
-//
-//
-//
-//
-// Related Topics Hash Table Two Pointers String Sliding Window
+// Related Topics 哈希表 双指针 字符串 Sliding Window
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -41,7 +32,7 @@ import java.util.Set;
 public class Solution_3 {
     public static void main(String[] args) {
         Solution_3 solution_3 = new Solution_3();
-        solution_3.lengthOfLongestSubstring_3("abcabcbb");
+        solution_3.mySolution_3("abcabcbb");
     }
 
     public int lengthOfLongestSubstring(String s) {
@@ -49,7 +40,7 @@ public class Solution_3 {
     }
 
     // 滑动窗口
-    public int lengthOfLongestSubstring_1(String s) {
+    public int mySolution_1(String s) {
         if (s == null || s.length() == 0) {
             return 0;
         }
@@ -72,7 +63,7 @@ public class Solution_3 {
     }
 
     // map优化的滑动窗口
-    public int lengthOfLongestSubstring_2(String s) {
+    public int mySolution_2(String s) {
         if (s == null || s.length() == 0) {
             return 0;
         }
@@ -90,7 +81,8 @@ public class Solution_3 {
         return result;
     }
 
-    public int lengthOfLongestSubstring_3(String s) {
+    // 数组优化的滑动窗口
+    public int mySolution_3(String s) {
         if (s == null || s.length() == 0) {
             return 0;
         }

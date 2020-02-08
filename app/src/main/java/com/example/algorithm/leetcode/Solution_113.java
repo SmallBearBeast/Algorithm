@@ -27,6 +27,9 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Tree Depth-first Search
 
+import com.example.algorithm.structure.SolutionUtil;
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -35,7 +38,7 @@ import java.util.Stack;
 public class Solution_113 {
     public static void main(String[] args) {
         Solution_113 solution = new Solution_113();
-        TreeNode tree = solution.createTree(new Integer[] {
+        TreeNode tree = SolutionUtil.createTree(new Integer[] {
                 1,
                 1, 1,
                 1, 1, 1, 1
@@ -129,38 +132,6 @@ public class Solution_113 {
             }
         }
         return result;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-    public TreeNode createTree(Integer[] nodes) {
-        int index = 0;
-        TreeNode root = new TreeNode(nodes[index]);
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.addLast(root);
-        while (index < nodes.length - 1) {
-            TreeNode node = queue.removeFirst();
-            if (nodes[index + 1] != null) {
-                TreeNode left = new TreeNode(nodes[index + 1]);
-                node.left = left;
-                queue.addLast(left);
-            }
-            if (nodes[index + 2] != null) {
-                TreeNode right = new TreeNode(nodes[index + 2]);
-                node.right = right;
-                queue.addLast(right);
-            }
-            index = index + 2;
-        }
-        return root;
     }
 
 }

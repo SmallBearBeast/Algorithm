@@ -15,10 +15,13 @@ package com.example.algorithm.leetcode;
 //Output: -1->0->3->4->5
 // Related Topics Linked List Sort
 
+import com.example.algorithm.structure.ListNode;
+import com.example.algorithm.structure.SolutionUtil;
+
 public class Solution_148 {
     public static void main(String[] args) {
         Solution_148 solution = new Solution_148();
-        ListNode head = solution.createLink(new int[] {
+        ListNode head = SolutionUtil.createLink(new int[] {
                 -1, 5, 3, 4, 0
         });
         solution.mySolution_1(head);
@@ -109,23 +112,5 @@ public class Solution_148 {
         }
         h.next = left != null ? left : right;
         return res.next;
-    }
-    public ListNode createLink(int[] datas) {
-        ListNode head = new ListNode(0);
-        ListNode temp = head;
-        for (int i = 0; i < datas.length; i++) {
-            temp.next = new ListNode(datas[i]);
-            temp = temp.next;
-        }
-        return head.next;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

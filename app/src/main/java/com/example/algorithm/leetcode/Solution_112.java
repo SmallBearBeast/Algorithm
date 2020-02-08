@@ -20,6 +20,8 @@ package com.example.algorithm.leetcode;
 // return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 // Related Topics Tree Depth-first Search
 
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -73,38 +75,5 @@ public class Solution_112 {
             }
         }
         return false;
-    }
-
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-    public TreeNode createTree(Integer[] nodes) {
-        int index = 0;
-        TreeNode root = new TreeNode(nodes[index]);
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.addLast(root);
-        while (index < nodes.length - 1) {
-            TreeNode node = queue.removeFirst();
-            if (nodes[index + 1] != null) {
-                TreeNode left = new TreeNode(nodes[index + 1]);
-                node.left = left;
-                queue.addLast(left);
-            }
-            if (nodes[index + 2] != null) {
-                TreeNode right = new TreeNode(nodes[index + 2]);
-                node.right = right;
-                queue.addLast(right);
-            }
-            index = index + 2;
-        }
-        return root;
     }
 }

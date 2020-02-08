@@ -8,6 +8,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Linked List
 
+import com.example.algorithm.structure.ListNode;
+
 public class Solution_21 {
     public static void main(String[] args) {
         Solution_21 solution = new Solution_21();
@@ -46,13 +48,5 @@ public class Solution_21 {
         }
         temp.next = l1 != null ? l1 : l2;
         return head.next;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int x) {
-            val = x;
-        }
     }
 }

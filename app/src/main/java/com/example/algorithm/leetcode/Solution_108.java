@@ -17,6 +17,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics 树 深度优先搜索
 
+import com.example.algorithm.structure.TreeNode;
+
 public class Solution_108 {
     public static void main(String[] args) {
         Solution_108 solution = new Solution_108();
@@ -42,15 +44,5 @@ public class Solution_108 {
         root.left = recursive_1(nums, start, mid - 1);
         root.right = recursive_1(nums, mid + 1, end);
         return root;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }

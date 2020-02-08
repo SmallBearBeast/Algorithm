@@ -51,20 +51,10 @@ package com.example.algorithm.leetcode;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
+import com.example.algorithm.structure.ListNode;
+
 import java.util.HashSet;
 import java.util.Set;
-
-/**
- * Definition for singly-linked list.
- * class ListNode {
- * int val;
- * ListNode next;
- * ListNode(int x) {
- * val = x;
- * next = null;
- * }
- * }
- */
 
 public class Solution_141 {
     public static void main(String[] args) {
@@ -98,15 +88,5 @@ public class Solution_141 {
             second = second.next != null ? second.next.next : null;
         }
         return false;
-    }
-
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 }

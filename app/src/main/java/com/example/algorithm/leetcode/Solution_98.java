@@ -38,14 +38,19 @@ package com.example.algorithm.leetcode;
 // Related Topics Tree Depth-first Search
 
 
+import com.example.algorithm.structure.SolutionUtil;
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.LinkedList;
 import java.util.Stack;
 
 public class Solution_98 {
     public static void main(String[] args) {
         Solution_98 solution_3 = new Solution_98();
-        TreeNode root = solution_3.createTree(new Integer[]{
-                3, 1, 5, 0, 4, 4, 6
+        TreeNode root = SolutionUtil.createTree(new Integer[]{
+                5,
+                1, 4,
+                null, null, 3, 6
         });
         solution_3.mySolution_1(root);
     }
@@ -54,6 +59,7 @@ public class Solution_98 {
         return false;
     }
 
+    // 自顶向下递归法
     public boolean recursive(TreeNode node, Integer lower, Integer upper) {
         if (node == null) {
             return true;
@@ -88,6 +94,7 @@ public class Solution_98 {
         uppers.add(upper);
     }
 
+    // 层序遍历法
     public boolean mySolution_2(TreeNode root) {
         Integer lower = null, upper = null, val;
         update(root, lower, upper);
@@ -111,6 +118,7 @@ public class Solution_98 {
         return true;
     }
 
+    // 中序遍历法，利用bst中序有序。
     public boolean mySolution_3(TreeNode root) {
         Stack<TreeNode> stack = new Stack();
         double inorder = - Double.MAX_VALUE;
@@ -129,37 +137,5 @@ public class Solution_98 {
             root = root.right;
         }
         return true;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
-    }
-
-    public TreeNode createTree(Integer[] nodes) {
-        int index = 0;
-        TreeNode root = new TreeNode(nodes[index]);
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.addLast(root);
-        while (index < nodes.length - 1) {
-            TreeNode node = queue.removeFirst();
-            if (nodes[index + 1] != null) {
-                TreeNode left = new TreeNode(nodes[index + 1]);
-                node.left = left;
-                queue.addLast(left);
-            }
-            if (nodes[index + 2] != null) {
-                TreeNode right = new TreeNode(nodes[index + 2]);
-                node.right = right;
-                queue.addLast(right);
-            }
-            index = index + 2;
-        }
-        return root;
     }
 }

@@ -14,10 +14,13 @@ package com.example.algorithm.leetcode;
 // A linked list can be reversed either iteratively or recursively. Could you implement both?
 // Related Topics Linked List
 
+import com.example.algorithm.structure.ListNode;
+import com.example.algorithm.structure.SolutionUtil;
+
 public class Solution_206 {
     public static void main(String[] args) {
         Solution_206 solution = new Solution_206();
-        ListNode list = solution.createLink(new int[] {
+        ListNode list = SolutionUtil.createLink(new int[] {
                 1, 2, 3, 4, 5
         });
         solution.mySolution_1(list);
@@ -59,24 +62,5 @@ public class Solution_206 {
         head.next.next = head;
         head.next = null;
         return p;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-    }
-
-    public ListNode createLink(int[] datas) {
-        ListNode head = new ListNode(0);
-        ListNode temp = head;
-        for (int i = 0; i < datas.length; i++) {
-            temp.next = new ListNode(datas[i]);
-            temp = temp.next;
-        }
-        return head.next;
     }
 }

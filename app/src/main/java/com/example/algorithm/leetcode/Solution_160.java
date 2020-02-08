@@ -51,6 +51,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Linked List
 
+import com.example.algorithm.structure.ListNode;
+
 public class Solution_160 {
     public static void main(String[] args) {
         Solution_160 solution = new Solution_160();
@@ -101,15 +103,5 @@ public class Solution_160 {
             tempB = tempB == null ? headA : tempB.next;
         }
         return tempA;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
     }
 }

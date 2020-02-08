@@ -24,6 +24,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Dynamic Programming Tree
 
+import com.example.algorithm.structure.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,15 +63,5 @@ public class Solution_95 {
             }
         }
         return list;
-    }
-
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
-        }
     }
 }
