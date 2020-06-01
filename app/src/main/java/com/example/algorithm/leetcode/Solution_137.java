@@ -22,7 +22,7 @@ package com.example.algorithm.leetcode;
 public class Solution_137 {
     public static void main(String[] args) {
         Solution_137 solution = new Solution_137();
-        solution.mySolution(new int[]{
+        solution.mySolution_1(new int[]{
                 2, 2, 3, 2
         });
     }
@@ -31,14 +31,25 @@ public class Solution_137 {
         return 1;
     }
 
-    public int mySolution(int[] nums) {
-        int one = 0, two = 0, temp = 0;
+    public int mySolution_1(int[] nums) {
+        int one = 0, two = 0;
+
         for (int num : nums) {
-            temp = (two & num) | (one & ~num);
-            two = (~one & ~two & num) | (two & ~num);
-            one = temp;
+            // first appearence:
+            // add num to seen_once
+            // don't add to seen_twice because of presence in seen_once
+
+            // second appearance:
+            // remove num from seen_once
+            // add num to seen_twice
+
+            // third appearance:
+            // don't add to seen_once because of presence in seen_twice
+            // remove num from seen_twice
+            one = ~two & (one ^ num);
+            two = ~one & (two ^ num);
         }
-        return two;
+        return one;
     }
 
 }

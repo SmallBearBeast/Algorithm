@@ -43,6 +43,8 @@ package com.example.algorithm.leetcode;
 //
 // Related Topics Tree Depth-first Search
 
+import com.example.algorithm.structure.Node;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -105,26 +107,4 @@ public class Solution_116 {
         }
         return root;
     }
-
-    class Node {
-        public int val;
-        public Node left;
-        public Node right;
-        public Node next;
-
-        public Node() {
-        }
-
-        public Node(int _val) {
-            val = _val;
-        }
-
-        public Node(int _val, Node _left, Node _right, Node _next) {
-            val = _val;
-            left = _left;
-            right = _right;
-            next = _next;
-        }
-    }
-
 }
