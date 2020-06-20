@@ -2,26 +2,33 @@ package com.example.algorithm.structure;
 
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class SolutionUtil {
     public static TreeNode createTree(Integer[] nodes) {
-        int index = 0;
-        TreeNode root = new TreeNode(nodes[index]);
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.addLast(root);
-        while (index < nodes.length - 1 && !queue.isEmpty()) {
-            TreeNode node = queue.removeFirst();
-            if (nodes[index + 1] != null) {
-                TreeNode left = new TreeNode(nodes[index + 1]);
+        if (nodes == null || nodes.length == 0) {
+            return null;
+        }
+        TreeNode root = new TreeNode(nodes[0]);
+        Queue<TreeNode> nodeQueue = new LinkedList<>();
+        Queue<Integer> indexQueue = new LinkedList<>();
+        nodeQueue.add(root);
+        indexQueue.add(0);
+        while (!nodeQueue.isEmpty()) {
+            TreeNode node = nodeQueue.poll();
+            int index = indexQueue.poll();
+            if (2 * index + 1 < nodes.length && nodes[2 * index + 1] != null) {
+                TreeNode left = new TreeNode(nodes[2 * index + 1]);
                 node.left = left;
-                queue.addLast(left);
+                nodeQueue.add(left);
+                indexQueue.add(2 * index + 1);
             }
-            if (nodes[index + 2] != null) {
-                TreeNode right = new TreeNode(nodes[index + 2]);
+            if (2 * index + 2 < nodes.length && nodes[2 * index + 2] != null) {
+                TreeNode right = new TreeNode(nodes[2 * index + 2]);
                 node.right = right;
-                queue.addLast(right);
+                nodeQueue.add(right);
+                indexQueue.add(2 * index + 2);
             }
-            index = index + 2;
         }
         return root;
     }
