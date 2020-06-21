@@ -49,31 +49,35 @@ public class Solution_139 {
         boolean result = solution_3.mySolution_4("applepenapple", Arrays.asList(
                 "apple", "pen"
         ));
-        String s = null;
+        System.out.println("result = " + result);
     }
 
     public boolean wordBreak(String s, List<String> wordDict) {
         return false;
     }
 
+    // 超时
     public boolean mySolution_1(String s, List<String> wordDict) {
-        return recursive(s, wordDict);
+        return recursive(s, wordDict, 0, new Boolean[s.length()]);
     }
 
     public boolean mySolution_2(String s, List<String> wordDict) {
-        boolean[] dp = new boolean[s.length()];
-        for (int i = 0; i < dp.length; i++) {
-            for (String word : wordDict) {
-                int index = s.indexOf(word, i);
-                if (index == i && i + word.length() - 1 < dp.length) {
-                    dp[i + word.length() - 1] = true;
-                }
-            }
-            while (i < dp.length && !dp[i]) {
-                i++;
+        return false;
+    }
+
+    public boolean recursive_2(String s, Set<String> wordDict, int start, Boolean[] visit) {
+        if (start == s.length()) {
+            return true;
+        }
+        if (visit[start] != null) {
+            return visit[start];
+        }
+        for (int end = start + 1; end <= s.length(); end++) {
+            if (wordDict.contains(s.substring(start, end)) && recursive_2(s, wordDict, end, visit)) {
+                return visit[start] = true;
             }
         }
-        return dp[dp.length - 1];
+        return visit[start] = false;
     }
 
     public boolean mySolution_3(String s, List<String> wordDict) {
@@ -115,15 +119,21 @@ public class Solution_139 {
     }
 
     // 超时
-    public boolean recursive(String s, List<String> wordDict) {
-        for (String word : wordDict) {
-            int index = s.indexOf(word);
-            if (index == 0 && (index + word.length() == s.length() || recursive(s.substring(index + word.length()), wordDict))) {
-                return true;
+    public boolean recursive(String s, List<String> wordDict, int start, Boolean[] visit) {
+        if (start == s.length()) {
+            return true;
+        }
+        if (visit[start] != null) {
+            return visit[start];
+        }
+        for (int i = 0; i < wordDict.size(); i++) {
+            String word = wordDict.get(i);
+            int index = s.indexOf(word, start);
+            if (index == start && recursive(s, wordDict, start + word.length(), visit)) {
+                return visit[start] = true;
             }
         }
-        return false;
+        return visit[start] = false;
     }
-
 
 }
