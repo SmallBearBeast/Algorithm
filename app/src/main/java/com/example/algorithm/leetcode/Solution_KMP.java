@@ -3,7 +3,7 @@ package com.example.algorithm.leetcode;
 public class Solution_KMP {
     public static void main(String[] args) {
         Solution_KMP solution = new Solution_KMP();
-        int result = solution.kmp("ababababca", "bca");
+        int result = solution.kmp("ababababca", "aacecaaa");
         System.out.println("result = " + result);
     }
 
@@ -35,14 +35,19 @@ public class Solution_KMP {
     public int[] pmt(String pat) {
         int[] pmt = new int[pat.length()];
         int i = 1;
+        int j = 0;
         while (i < pmt.length) {
-            int j = 0;
-            while (i < pmt.length && pat.charAt(i) == pat.charAt(j)) {
+            if (pat.charAt(i) == pat.charAt(j)) {
                 pmt[i] = j + 1;
-                i ++;
-                j ++;
+                i++;
+                j++;
+            } else {
+                if (j == 0) {
+                    i ++;
+                } else {
+                    j = pmt[j - 1];
+                }
             }
-            i ++;
         }
         return pmt;
     }
