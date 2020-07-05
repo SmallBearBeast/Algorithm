@@ -44,8 +44,9 @@ public class Solution_136 {
         return -result;
     }
 
+    // 异或发
     public int mySolution(int[] nums) {
-        int result = nums[0];
+        int result = 0;
         for (int i = 1; i < nums.length; i++) {
             result = result ^ nums[i];
         }
