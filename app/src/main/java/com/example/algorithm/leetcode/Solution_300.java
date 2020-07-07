@@ -18,7 +18,9 @@ package com.example.algorithm.leetcode;
 // 进阶: 你能将算法的时间复杂度降低到 O(n log n) 吗?
 // Related Topics 二分查找 动态规划
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Solution_300 {
     public static void main(String[] args) {
@@ -33,6 +35,7 @@ public class Solution_300 {
         return 1;
     }
 
+    // 动态规范，以该数为结尾的最长上升序列
     public int mySolution_1(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
@@ -47,15 +50,41 @@ public class Solution_300 {
                 }
                 if (nums[i] > nums[j]) {
                     dp[i] = Math.max(dp[i], dp[j] + 1);
-                    result = Math.max(result, dp[i]);
                 }
             }
+            result = Math.max(result, dp[i]);
         }
         return result;
     }
 
+    // 贪心 + 二分查找
+    // 表示长度为i的最长上升子序列的末尾元素的最小值
     public int mySolution_2(int[] nums) {
-        return 1;
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int len = 1;
+        int[] dp = new int[nums.length + 1];
+        dp[len] = nums[0];
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > dp[len]) {
+                dp[++len] = nums[i];
+            } else {
+                int start = 1;
+                int end = len;
+                int pos = 0;
+                while (start <= end) {
+                    int mid = (start + end) >> 1;
+                    if (dp[mid] < nums[i]) {
+                        pos = mid;
+                        start = mid + 1;
+                    } else {
+                        end = mid - 1;
+                    }
+                }
+                dp[pos + 1] = nums[i];
+            }
+        }
+        return len;
     }
-
 }
