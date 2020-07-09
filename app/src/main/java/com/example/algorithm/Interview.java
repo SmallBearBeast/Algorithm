@@ -2,12 +2,15 @@ package com.example.algorithm;
 
 import com.example.algorithm.leetcode.Solution_Module;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Interview {
     public static void main(String[] args) {
-        Solution_Module solution = new Solution_Module();
+        Interview solution = new Interview();
 //        int result = solution.getMaxSumChildArr(new int[] {
 //                1, 2, 3, -7
 //        });
@@ -15,9 +18,15 @@ public class Interview {
 //
 //        generateArr(10);
 
-        Interview interview = new Interview();
-        int[] sum = {1, -2, -33, 4};
-        System.out.println(interview.getTotalSum(sum));
+//        Interview interview = new Interview();
+//        int[] sum = {1, -2, -33, 4};
+//        System.out.println(interview.getTotalSum(sum));
+        int[] result = solution.getRandom(1000);
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < result.length; i++) {
+            set.add(result[i]);
+        }
+        System.out.println("size = " + set.size() + ", result = " + Arrays.toString(result));
     }
 
     public int minDistance(String word1, String word2) {
@@ -69,13 +78,7 @@ public class Interview {
 //
 //    }
 //
-//    public void ss(int n) {
-//        int[] result = new int[n];
-//        Random random = new Random(n);
-//        for (int i = 0; i < result.length; i++) {
-//
-//        }
-//    }
+
 //
 //    /**
 //     * 生成长度为n的随机数组，数组的取值范围再1到n，不能重复
@@ -113,33 +116,57 @@ public class Interview {
 
 
     // 石熙的代码，命名很有问题，三次遍历
-    public int getTotalSum(int[] sum){
-        int bigSum = 0;
-        int arrayStart = 0;
-        int arrayEnd = 0;
+//    public int getTotalSum(int[] sum){
+//        int bigSum = 0;
+//        int arrayStart = 0;
+//        int arrayEnd = 0;
+//
+//        for(int startIndex = 0; startIndex <= sum.length - 1; startIndex++){
+//            for(int endIndex = startIndex; endIndex <= sum.length - 1; endIndex++ ){
+//                int sumNum = getSum(sum, startIndex, endIndex);
+//
+//                if(sumNum > bigSum){
+//                    arrayStart = startIndex;
+//                    arrayEnd = endIndex;
+//                    bigSum = sumNum;
+//                }
+//            }
+//        }
+//
+//        return bigSum;
+//    }
+//
+//    public int getSum(int[] sum, int startIndex, int endIndex){
+//        int sumNum = 0;
+//
+//        for(int index=startIndex; index <= endIndex; index++) {
+//            sumNum+=sum[index];
+//        }
+//
+//        return sumNum;
+//    }
 
-        for(int startIndex = 0; startIndex <= sum.length - 1; startIndex++){
-            for(int endIndex = startIndex; endIndex <= sum.length - 1; endIndex++ ){
-                int sumNum = getSum(sum, startIndex, endIndex);
-
-                if(sumNum > bigSum){
-                    arrayStart = startIndex;
-                    arrayEnd = endIndex;
-                    bigSum = sumNum;
-                }
+    public int[] getRandom(int n) {
+        int[] result = new int[n];
+        Random random = new Random(n);
+        for (int i = 0; i < result.length; i++) {
+            int cur = random.nextInt(n) + 1;
+            while (result[cur - 1] < 0) {
+                cur = random.nextInt(n) + 1;
+            }
+            if (result[i] == Integer.MIN_VALUE) {
+                result[i] = -cur;
+            } else {
+                result[i] = cur;
+            }
+            result[cur - 1] = result[cur - 1] * -1;
+            if (result[cur - 1] == 0) {
+                result[cur - 1] = Integer.MIN_VALUE;
             }
         }
-
-        return bigSum;
-    }
-
-    public int getSum(int[] sum, int startIndex, int endIndex){
-        int sumNum = 0;
-
-        for(int index=startIndex; index <= endIndex; index++) {
-            sumNum+=sum[index];
+        for (int i = 0; i < n; i++) {
+            result[i] = result[i] * -1;
         }
-
-        return sumNum;
+        return result;
     }
 }
