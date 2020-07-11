@@ -41,6 +41,7 @@ public class Solution_329 {
         return 1;
     }
 
+    // dfs + dp
     public int mySolution_1(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {
             return 0;
@@ -69,33 +70,25 @@ public class Solution_329 {
             return;
         }
         if (x > 0) {
-            if (matrix[x][y] >= matrix[x - 1][y]) {
-                dp[x][y] = Math.max(dp[x][y], 1);
-            } else {
+            if (matrix[x][y] < matrix[x - 1][y]) {
                 recursive_1(matrix, dp, x - 1, y);
                 dp[x][y] = Math.max(dp[x - 1][y] + 1, dp[x][y]);
             }
         }
         if (x < matrix.length - 1) {
-            if (matrix[x][y] >= matrix[x + 1][y]) {
-                dp[x][y] = Math.max(dp[x][y], 1);
-            } else {
+            if (matrix[x][y] < matrix[x + 1][y]) {
                 recursive_1(matrix, dp, x + 1, y);
                 dp[x][y] = Math.max(dp[x + 1][y] + 1, dp[x][y]);
             }
         }
         if (y > 0) {
-            if (matrix[x][y] >= matrix[x][y - 1]) {
-                dp[x][y] = Math.max(dp[x][y], 1);
-            } else {
+            if (matrix[x][y] < matrix[x][y - 1]) {
                 recursive_1(matrix, dp, x, y - 1);
                 dp[x][y] = Math.max(dp[x][y - 1] + 1, dp[x][y]);
             }
         }
         if (y < matrix[0].length - 1) {
-            if (matrix[x][y] >= matrix[x][y + 1]) {
-                dp[x][y] = Math.max(dp[x][y], 1);
-            } else {
+            if (matrix[x][y] < matrix[x][y + 1]) {
                 recursive_1(matrix, dp, x, y + 1);
                 dp[x][y] = Math.max(dp[x][y + 1] + 1, dp[x][y]);
             }

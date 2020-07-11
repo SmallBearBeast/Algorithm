@@ -13,15 +13,17 @@ package com.example.algorithm.leetcode;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 public class Solution_128 {
     public static void main(String[] args) {
         Solution_128 solution = new Solution_128();
-        solution.mySolution_2(new int[]{
-                0, -1
+        int result = solution.mySolution_3(new int[]{
+                100, 4, 200, 1, 3, 2
         });
+        System.out.println("result = " + result);
     }
 
     public int longestConsecutive(int[] nums) {
@@ -82,4 +84,54 @@ public class Solution_128 {
         return max;
     }
 
+    public int mySolution_3(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        Set<Integer> totalSet = new HashSet<>();
+        Set<Integer> startSet = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            totalSet.add(nums[i]);
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (totalSet.contains(nums[i] + 1) && !totalSet.contains(nums[i] - 1)) {
+                startSet.add(nums[i]);
+            }
+        }
+        int result = 1;
+        for (Integer val : startSet) {
+            if (!totalSet.contains(val + result)) {
+                continue;
+            }
+            int count = 0;
+            while (totalSet.contains(val ++)) {
+                count ++;
+            }
+            result = Math.max(result, count);
+        }
+        return result;
+    }
+
+    public int mySolution_4(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        Set<Integer> totalSet = new HashSet<>();
+        for (int num : nums) {
+            totalSet.add(num);
+        }
+        int result = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (!totalSet.contains(nums[i] - 1)) {
+                int currentNum = nums[i];
+                int currentStreak = 1;
+                while (totalSet.contains(currentNum + 1)) {
+                    currentNum += 1;
+                    currentStreak += 1;
+                }
+                result = Math.max(result, currentStreak);
+            }
+        }
+        return result;
+    }
 }

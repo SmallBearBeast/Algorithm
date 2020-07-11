@@ -21,12 +21,14 @@ public class Interview {
 //        Interview interview = new Interview();
 //        int[] sum = {1, -2, -33, 4};
 //        System.out.println(interview.getTotalSum(sum));
-        int[] result = solution.getRandom(1000);
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < result.length; i++) {
-            set.add(result[i]);
-        }
-        System.out.println("size = " + set.size() + ", result = " + Arrays.toString(result));
+//        int[] result = solution.getRandom(1000);
+//        Set<Integer> set = new HashSet<>();
+//        for (int i = 0; i < result.length; i++) {
+//            set.add(result[i]);
+//        }
+//        System.out.println("size = " + set.size() + ", result = " + Arrays.toString(result));
+
+        System.out.println(solution.getDuplicateString("sjkfjdfkdf","sdf"));
     }
 
     public int minDistance(String word1, String word2) {
@@ -169,4 +171,24 @@ public class Interview {
         }
         return result;
     }
+
+
+    // 单季兵
+    // 计算两个字符串的最大公共子串
+    private static StringBuilder sb= new StringBuilder();
+    private static HashSet<Character> hashSet = new HashSet<>();
+    private static String getDuplicateString(String s1, String s2) {
+        char[] char1 = s1.toCharArray();
+        char[] char2 = s2.toCharArray();
+        for(int i = 0; i < char1.length; i++) {
+            for(int j = 0; j < char2.length; j++) {
+                if(char1[i] == char2[j] && hashSet.add(char1[i])) {
+                    sb.append(char1[i]);
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    // 给定整数T和升序的数组A，找到一个最接近T的数字，知道是二分，但是没做出来，没有做题经验。
 }
