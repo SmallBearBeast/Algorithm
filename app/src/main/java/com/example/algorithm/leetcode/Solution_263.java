@@ -34,7 +34,7 @@ package com.example.algorithm.leetcode;
 public class Solution_263 {
     public static void main(String[] args) {
         Solution_263 solution = new Solution_263();
-        boolean result = solution.mySolution_1(3);
+        boolean result = solution.mySolution_2(3);
         System.out.println("result = " + result);
     }
 
@@ -58,8 +58,30 @@ public class Solution_263 {
         return num == 1;
     }
 
+    /**
+     * 递归写法
+     */
     public boolean mySolution_2(int num) {
-        return false;
+        if (num <= 0) {
+            return false;
+        }
+        if (num == 1) {
+            return true;
+        }
+        int temp = num;
+        if ((num % 2) == 0) {
+            num = num / 2;
+        }
+        if ((num % 3) == 0) {
+            num = num / 3;
+        }
+        if ((num % 5) == 0) {
+            num = num / 5;
+        }
+        if (temp == num) {
+            return false;
+        }
+        return mySolution_2(num);
     }
 
 }
