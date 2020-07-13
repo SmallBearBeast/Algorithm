@@ -1,12 +1,12 @@
 package com.example.algorithm;
 
-import com.example.algorithm.leetcode.Solution_Module;
-
-import java.lang.reflect.Array;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.Calendar;
 import java.util.Random;
-import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Interview {
     public static void main(String[] args) {
@@ -29,6 +29,80 @@ public class Interview {
 //        System.out.println("size = " + set.size() + ", result = " + Arrays.toString(result));
 
         System.out.println(solution.getDuplicateString("sjkfjdfkdf","sdf"));
+//        int[] result = solution.getRandom(1000);
+//        Set<Integer> set = new HashSet<>();
+//        for (int i = 0; i < result.length; i++) {
+//            set.add(result[i]);
+//        }
+//        System.out.println("size = " + set.size() + ", result = " + Arrays.toString(result));
+        String val = "\uD83C\uDF39";
+
+        System.out.println("defaultCharset = " + Charset.defaultCharset());
+        System.out.println("val.toCharArray = " + Arrays.toString(val.toCharArray()));
+        System.out.println("val.getBytes = " + Arrays.toString(val.getBytes()));
+        System.out.println("val.getBytes = " + Arrays.toString(val.getBytes()));
+        System.out.println("val = " + val);
+
+        String another = new String(new byte[] {
+                -16, -97, -104, -115
+        });
+        System.out.println("another = " + another);
+        System.out.println("another = " + solution.parseEmojiText("早上好[-16, -97, -104, -115][-16, -97, -104, -115]"));
+
+        String content = "[{\"text\":\"*好[-16, -97, -104, -115]\",\"type\":1},{\"text\":\"女嘉宾真漂亮[-16, -97, -104, -115]\",\"type\":2},{\"text\":\"女嘉宾喜欢什么样的男生？\",\"type\":2},{\"text\":\"你好，认识下吗？\",\"type\":2},{\"text\":\"[-16, -97, -104, -115]\",\"type\":1},{\"text\":\"很高兴认识你\",\"type\":1},{\"text\":\"红娘，求介绍对象\",\"type\":1},{\"text\":\"哈哈哈[-16, -97, -104, -124]\",\"type\":1}]";
+
+        solution.getDayPeriodText();
+    }
+
+    /**
+     * 早上：5:00–8:00
+     * 上午：8:00–12:00
+     * 中午：12:00–13:00
+     * 下午：13:00–19:00
+     * 晚上：19:00–24:00
+     * 凌晨：0:00–5:00
+     */
+    public String getDayPeriodText() {
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        System.out.println("hour = " + hour);
+        if (hour >= 5 && hour < 8) {
+            return "早上好";
+        } else if (hour >= 8 && hour < 12) {
+            return "上午好";
+        } else if (hour >= 12 && hour < 13) {
+            return "中午好";
+        } else if (hour >= 13 && hour < 19) {
+            return "下午好";
+        } else if (hour >= 19 && hour < 24) {
+            return "晚上好";
+        }
+        return null;
+    }
+
+    public String parseEmojiText(String text) {
+        StringBuilder builder = new StringBuilder();
+        String regex = "\\[(.+?)\\]";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(text);
+        int start = 0;
+        while (matcher.find()) {
+            String emojiStr = matcher.group();
+            builder.append(text.substring(start, matcher.start()));
+            start = matcher.end();
+            try {
+                emojiStr = emojiStr.substring(1, emojiStr.length() - 1);
+                String[] emojiStrArray = emojiStr.split(",");
+                byte[] emojiByteArray = new byte[emojiStrArray.length];
+                for (int i = 0; i < emojiByteArray.length; i++) {
+                    emojiByteArray[i] = Byte.parseByte(emojiStrArray[i].trim());
+                }
+                builder.append(new String(emojiByteArray, StandardCharsets.UTF_8));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return builder.toString();
     }
 
     public int minDistance(String word1, String word2) {
