@@ -1,6 +1,7 @@
 package com.example.algorithm;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Other {
     public static void main(String[] args) {
@@ -10,6 +11,22 @@ public class Other {
         };
         other.quickSort(result, 0, result.length - 1);
         System.out.println("result = " + Arrays.toString(result));
+
+        Stack<Integer> stack = new Stack<>();
+        stack.push(100);
+        stack.push(200);
+        stack.push(300);
+        System.out.println("stack.size = " + stack.size());
+
+        // 后面遍历可以remove，不会出现数组越界问题。
+        int size = stack.size();
+        for (int i = size - 1; i >= 0; i--) {
+            int val = stack.get(i);
+            stack.pop();
+            size --;
+            System.out.println("val = " + val);
+        }
+        System.out.println("stack.size = " + stack.size());
     }
 
 
