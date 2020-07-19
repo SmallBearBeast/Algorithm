@@ -156,29 +156,43 @@ public class Solution_Sort {
             return;
         }
         int mid = (start + end) / 2;
-        mid = mid == start ? end : mid;
-        mergeSort(nums, start, mid - 1);
-        mergeSort(nums, mid, end);
-        mergeArray(nums, start, end);
+        // 这边应该是分为mid和mid + 1，而不是mid - 1和mid，后者会有死循环。
+        mergeSort(nums, start, mid);
+        mergeSort(nums, mid + 1, end);
+        mergeArray(nums, start, mid, mid + 1, end);
     }
 
-    private void mergeArray(int[] nums, int start, int end) {
-        int mid = (start + end) / 2;
-        while (start < mid) {
-            if (nums[start] > nums[mid]) {
-                swap(nums, start, mid);
+    public void mergeArray(int[] nums, int start_1, int end_1, int start_2, int end_2) {
+        int index_1 = start_1;
+        int index_2 = start_2;
+        int index = 0;
+        int[] newNums = new int[end_2 - start_1 + 1];
+        while (index_1 <= end_1 || index_2 <= end_2) {
+            if (index_1 > end_1) {
+                newNums[index] = nums[index_2];
+                index_2 ++;
+                index ++;
+                continue;
             }
-            start++;
+            if (index_2 > end_2) {
+                newNums[index] = nums[index_1];
+                index_1 ++;
+                index ++;
+                continue;
+            }
+            if (nums[index_1] <= nums[index_2]) {
+                newNums[index] = nums[index_1];
+                index_1 ++;
+            } else {
+                newNums[index] = nums[index_2];
+                index_2 ++;
+            }
+            index ++;
         }
-        int i = mid + 1;
-        int base = nums[mid];
-        while (i <= end && base > nums[i]) {
-            nums[i - 1] = nums[i];
-            i++;
+        for (int i = start_1; i <= end_2; i++) {
+            nums[i] = newNums[i - start_1];
         }
-        nums[i - 1] = base;
     }
-
 
     public int max(int[] nums) {
         int max = nums[0];
