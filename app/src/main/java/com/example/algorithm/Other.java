@@ -1,32 +1,41 @@
 package com.example.algorithm;
 
 import java.util.Arrays;
+import java.util.PriorityQueue;
 import java.util.Stack;
 
 public class Other {
     public static void main(String[] args) {
         Other other = new Other();
-        int[] result = new int[] {
-                14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 15
-        };
-        other.quickSort(result, 0, result.length - 1);
-        System.out.println("result = " + Arrays.toString(result));
+//        int[] result = new int[] {
+//                14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 15
+//        };
+//        other.quickSort(result, 0, result.length - 1);
+//        System.out.println("result = " + Arrays.toString(result));
+//
+//        Stack<Integer> stack = new Stack<>();
+//        stack.push(100);
+//        stack.push(200);
+//        stack.push(300);
+//        System.out.println("stack.size = " + stack.size());
+//
+//        // 后面遍历可以remove，不会出现数组越界问题。
+//        int size = stack.size();
+//        for (int i = size - 1; i >= 0; i--) {
+//            int val = stack.get(i);
+//            stack.pop();
+//            size --;
+//            System.out.println("val = " + val);
+//        }
+//        System.out.println("stack.size = " + stack.size());
 
-        Stack<Integer> stack = new Stack<>();
-        stack.push(100);
-        stack.push(200);
-        stack.push(300);
-        System.out.println("stack.size = " + stack.size());
-
-        // 后面遍历可以remove，不会出现数组越界问题。
-        int size = stack.size();
-        for (int i = size - 1; i >= 0; i--) {
-            int val = stack.get(i);
-            stack.pop();
-            size --;
-            System.out.println("val = " + val);
-        }
-        System.out.println("stack.size = " + stack.size());
+        PriorityQueue<Integer> heap = new PriorityQueue<>();
+        heap.add(10);
+        heap.add(5);
+        heap.add(8);
+        heap.add(15);
+        heap.add(3);
+        System.out.println("heap.poll = " + heap.poll());
     }
 
 
