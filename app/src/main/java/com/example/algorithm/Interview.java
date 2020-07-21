@@ -10,6 +10,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Interview {
+    // 单季兵
+    // 计算两个字符串的最大公共子串
+    private static StringBuilder sb = new StringBuilder();
+    private static HashSet<Character> hashSet = new HashSet<>();
+
     public static void main(String[] args) {
         Interview solution = new Interview();
 //        int result = solution.getMaxSumChildArr(new int[] {
@@ -29,30 +34,48 @@ public class Interview {
 //        }
 //        System.out.println("size = " + set.size() + ", result = " + Arrays.toString(result));
 
-        System.out.println(solution.getDuplicateString("sjkfjdfkdf","sdf"));
+//        System.out.println(solution.getDuplicateString("sjkfjdfkdf", "sdf"));
 //        int[] result = solution.getRandom(1000);
 //        Set<Integer> set = new HashSet<>();
 //        for (int i = 0; i < result.length; i++) {
 //            set.add(result[i]);
 //        }
 //        System.out.println("size = " + set.size() + ", result = " + Arrays.toString(result));
-        String val = "\uD83C\uDF39";
+//        String val = "\uD83C\uDF39";
+//
+//        System.out.println("defaultCharset = " + Charset.defaultCharset());
+//        System.out.println("val.toCharArray = " + Arrays.toString(val.toCharArray()));
+//        System.out.println("val.getBytes = " + Arrays.toString(val.getBytes()));
+//        System.out.println("val.getBytes = " + Arrays.toString(val.getBytes()));
+//        System.out.println("val = " + val);
+//
+//        String another = new String(new byte[]{
+//                -16, -97, -104, -115
+//        });
+//        System.out.println("another = " + another);
+//        System.out.println("another = " + solution.parseEmojiText("早上好[-16, -97, -104, -115][-16, -97, -104, -115]"));
+//
+//        String content = "[{\"text\":\"*好[-16, -97, -104, -115]\",\"type\":1},{\"text\":\"女嘉宾真漂亮[-16, -97, -104, -115]\",\"type\":2},{\"text\":\"女嘉宾喜欢什么样的男生？\",\"type\":2},{\"text\":\"你好，认识下吗？\",\"type\":2},{\"text\":\"[-16, -97, -104, -115]\",\"type\":1},{\"text\":\"很高兴认识你\",\"type\":1},{\"text\":\"红娘，求介绍对象\",\"type\":1},{\"text\":\"哈哈哈[-16, -97, -104, -124]\",\"type\":1}]";
+//
+//        solution.getDayPeriodText();
 
-        System.out.println("defaultCharset = " + Charset.defaultCharset());
-        System.out.println("val.toCharArray = " + Arrays.toString(val.toCharArray()));
-        System.out.println("val.getBytes = " + Arrays.toString(val.getBytes()));
-        System.out.println("val.getBytes = " + Arrays.toString(val.getBytes()));
-        System.out.println("val = " + val);
+        int result = solution.getNearbyNum(new int[]{
+                1, 2, 3, 4, 5, 6
+        }, 10);
+        System.out.println("result = " + result);
+    }
 
-        String another = new String(new byte[] {
-                -16, -97, -104, -115
-        });
-        System.out.println("another = " + another);
-        System.out.println("another = " + solution.parseEmojiText("早上好[-16, -97, -104, -115][-16, -97, -104, -115]"));
-
-        String content = "[{\"text\":\"*好[-16, -97, -104, -115]\",\"type\":1},{\"text\":\"女嘉宾真漂亮[-16, -97, -104, -115]\",\"type\":2},{\"text\":\"女嘉宾喜欢什么样的男生？\",\"type\":2},{\"text\":\"你好，认识下吗？\",\"type\":2},{\"text\":\"[-16, -97, -104, -115]\",\"type\":1},{\"text\":\"很高兴认识你\",\"type\":1},{\"text\":\"红娘，求介绍对象\",\"type\":1},{\"text\":\"哈哈哈[-16, -97, -104, -124]\",\"type\":1}]";
-
-        solution.getDayPeriodText();
+    private static String getDuplicateString(String s1, String s2) {
+        char[] char1 = s1.toCharArray();
+        char[] char2 = s2.toCharArray();
+        for (int i = 0; i < char1.length; i++) {
+            for (int j = 0; j < char2.length; j++) {
+                if (char1[i] == char2[j] && hashSet.add(char1[i])) {
+                    sb.append(char1[i]);
+                }
+            }
+        }
+        return sb.toString();
     }
 
     /**
@@ -104,18 +127,6 @@ public class Interview {
             }
         }
         return builder.toString();
-    }
-
-    public int minDistance(String word1, String word2) {
-        return 1;
-    }
-
-    public int mySolution_1(String word1, String word2) {
-        return 1;
-    }
-
-    public int mySolution_2(String word1, String word2) {
-        return 1;
     }
 
     // 陈双的代码
@@ -223,6 +234,18 @@ public class Interview {
 //        return sumNum;
 //    }
 
+    public int minDistance(String word1, String word2) {
+        return 1;
+    }
+
+    public int mySolution_1(String word1, String word2) {
+        return 1;
+    }
+
+    public int mySolution_2(String word1, String word2) {
+        return 1;
+    }
+
     public int[] getRandom(int n) {
         int[] result = new int[n];
         Random random = new Random(n);
@@ -247,22 +270,26 @@ public class Interview {
         return result;
     }
 
-
-    // 单季兵
-    // 计算两个字符串的最大公共子串
-    private static StringBuilder sb= new StringBuilder();
-    private static HashSet<Character> hashSet = new HashSet<>();
-    private static String getDuplicateString(String s1, String s2) {
-        char[] char1 = s1.toCharArray();
-        char[] char2 = s2.toCharArray();
-        for(int i = 0; i < char1.length; i++) {
-            for(int j = 0; j < char2.length; j++) {
-                if(char1[i] == char2[j] && hashSet.add(char1[i])) {
-                    sb.append(char1[i]);
+    public int getNearbyNum(int[] nums, int val) {
+        int start = 0;
+        int end = nums.length - 1;
+        while (start < end) {
+            if (end - start <= 2) {
+                if (Math.abs(nums[end] - val) > Math.abs(nums[start] - val)) {
+                    return nums[start];
                 }
+                return nums[end];
+            }
+            int mid = (start + end) >> 1;
+            if (nums[mid] < val) {
+                start = mid;
+            } else if (nums[mid] > val) {
+                end = mid;
+            } else {
+                return nums[mid];
             }
         }
-        return sb.toString();
+        return 0;
     }
 
     // 给定整数T和升序的数组A，找到一个最接近T的数字，知道是二分，但是没做出来，没有做题经验。
