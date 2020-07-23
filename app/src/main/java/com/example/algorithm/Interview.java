@@ -59,8 +59,8 @@ public class Interview {
 //
 //        solution.getDayPeriodText();
 
-        int result = solution.getNearbyNum(new int[]{
-                1, 2, 3, 4, 5, 6
+        int result = solution.getNearbyNum_1(new int[]{
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
         }, 10);
         System.out.println("result = " + result);
     }
@@ -270,11 +270,16 @@ public class Interview {
         return result;
     }
 
+    // 递归写法
+    public int getNearbyNum_1(int[] nums, int val) {
+        return getNearbyNumRecursive(nums, 0, nums.length - 1, val);
+    }
+
     public int getNearbyNum(int[] nums, int val) {
         int start = 0;
         int end = nums.length - 1;
         while (start < end) {
-            if (end - start <= 2) {
+            if (end - start < 2) {
                 if (Math.abs(nums[end] - val) > Math.abs(nums[start] - val)) {
                     return nums[start];
                 }
@@ -292,5 +297,41 @@ public class Interview {
         return 0;
     }
 
+    public int getNearbyNumRecursive(int[] nums, int start, int end, int val) {
+        if (end - start < 2) {
+            if (Math.abs(nums[end] - val) > Math.abs(nums[start] - val)) {
+                return nums[start];
+            }
+            return nums[end];
+        }
+        int mid = (start + end) >> 1;
+        if (nums[mid] == val) {
+            return nums[mid];
+        }
+        if (nums[mid] < val) {
+            return getNearbyNumRecursive(nums, mid, end, val);
+        } else {
+            return getNearbyNumRecursive(nums, start, mid, val);
+        }
+    }
+
     // 给定整数T和升序的数组A，找到一个最接近T的数字，知道是二分，但是没做出来，没有做题经验。
+
+//    public int findNearestValue(int[] array, int input, int begin, int end){
+//        if(array == null || array.length == 0 || end <= begin){
+//            return pos;
+//        }
+//        int pos = (end - begin)/2 + begin;
+//        if(array.length <= pos){}{
+//            return pos;
+//        }
+//        int d = Math.abs(array[pos] - input);
+//        if(d <= 0){
+//            return pos;
+//        }
+//
+//        int pLeft = findNearestValue(array, input , begin, pos);
+//        int pRight = findNearestValue(array, input , pos + 1, end);
+//        return pLeft;
+//    }
 }
