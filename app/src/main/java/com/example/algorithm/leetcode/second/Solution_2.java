@@ -16,9 +16,9 @@ package com.example.algorithm.leetcode.second;
 
 import com.example.algorithm.structure.ListNode;
 
-public class Solution_2_2 {
+public class Solution_2 {
     public static void main(String[] args) {
-        Solution_2_2 solution2 = new Solution_2_2();
+        Solution_2 solution2 = new Solution_2();
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

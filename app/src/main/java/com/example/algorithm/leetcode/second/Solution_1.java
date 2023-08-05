@@ -12,9 +12,9 @@ import java.util.Map;
  * 你可以按任意顺序返回答案。
  */
 
-public class Solution_2_1 {
+public class Solution_1 {
     public static void main(String[] args) {
-        Solution_2_1 solution1 = new Solution_2_1();
+        Solution_1 solution1 = new Solution_1();
         int[] result = solution1.mySolution_2(new int[]{2, 7, 11, 15}, 9);
         System.out.println(Arrays.toString(result));
     }
