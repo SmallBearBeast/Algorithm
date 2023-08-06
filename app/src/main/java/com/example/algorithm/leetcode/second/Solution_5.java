@@ -1,32 +1,15 @@
-package com.example.algorithm.leetcode.first;
-//Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
-//
-// Example 1:
-//
-//
-//Input: "babad"
-//Output: "bab"
-//Note: "aba" is also a valid answer.
-//
-//
-// Example 2:
-//
-//
-//Input: "cbbd"
-//Output: "bb"
-//
-// Related Topics String Dynamic Programming
+package com.example.algorithm.leetcode.second;
 
 public class Solution_5 {
     public static void main(String[] args) {
-        Solution_5 solution = new Solution_5();
-        solution.mySolution_1("aaaa");
+        Solution_5 solution5 = new Solution_5();
+        System.out.println(solution5.mySolution_2("cbbd"));
     }
+
 
     public String longestPalindrome(String s) {
-        return null;
+        return "";
     }
-
 
     // 二维动态规划
     public String mySolution_1(String s) {
@@ -110,6 +93,4 @@ public class Solution_5 {
         }
         return s.substring(start, end);
     }
-
-    //Manacher's Algorithm 马拉车算法。
 }

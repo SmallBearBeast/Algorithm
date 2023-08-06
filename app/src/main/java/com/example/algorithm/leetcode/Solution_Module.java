@@ -2,18 +2,11 @@ package com.example.algorithm.leetcode;
 
 public class Solution_Module {
     public static void main(String[] args) {
-        Solution_Module solution = new Solution_Module();
+        Solution_Module solution_module = new Solution_Module();
+        solution_module.mySolution_1();
     }
 
-    public int minDistance(String word1, String word2) {
-        return 1;
-    }
+    public void mySolution_1() {
 
-    public int mySolution_1(String word1, String word2) {
-        return 1;
-    }
-
-    public int mySolution_2(String word1, String word2) {
-        return 1;
     }
 }
