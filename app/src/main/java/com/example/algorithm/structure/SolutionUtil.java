@@ -42,4 +42,13 @@ public class SolutionUtil {
         }
         return head.next;
     }
+
+    public static String toListNodeStr(ListNode head) {
+        StringBuilder builder = new StringBuilder();
+        while (head != null) {
+            builder.append(head.val).append(", ");
+            head = head.next;
+        }
+        return builder.toString();
+    }
 }

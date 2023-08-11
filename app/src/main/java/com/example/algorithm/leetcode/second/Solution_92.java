@@ -1,33 +1,16 @@
-package com.example.algorithm.leetcode.first;
-//Reverse a linked list from position m to n. Do it in one-pass.
-//
-// Note: 1 ≤ m ≤ n ≤ length of list.
-//
-// Example:
-//
-//
-//Input: 1->2->3->4->5->NULL, m = 2, n = 4
-//Output: 1->4->3->2->5->NULL
-//
-// Related Topics Linked List
-
+package com.example.algorithm.leetcode.second;
 
 import com.example.algorithm.structure.ListNode;
 import com.example.algorithm.structure.SolutionUtil;
 
 public class Solution_92 {
     public static void main(String[] args) {
-        Solution_92 solution = new Solution_92();
-        ListNode list = SolutionUtil.createLink(new int[] {
+        Solution_92 solution_92 = new Solution_92();
+        ListNode node = solution_92.mySolution_2(SolutionUtil.createLink(new int[] {
                 1, 2, 3, 4, 5
-        });
-        solution.mySolution_1(list, 2, 3);
+        }), 1, 5);
+        System.out.println(SolutionUtil.toListNodeStr(node));
     }
-
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        return null;
-    }
-
 
     // 头结点（保证有值，省略掉判空）+普通反转链表法。
     public ListNode mySolution_1(ListNode head, int left, int right) {
@@ -73,4 +56,7 @@ public class Solution_92 {
         }
         return dummyNode.next;
     }
+
+    // 递归法
+    // TODO: 2023/8/11  
 }
