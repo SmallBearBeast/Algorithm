@@ -51,4 +51,8 @@ public class SolutionUtil {
         }
         return builder.toString();
     }
+
+    public static <T> void print(T data) {
+        System.out.println(data);
+    }
 }
