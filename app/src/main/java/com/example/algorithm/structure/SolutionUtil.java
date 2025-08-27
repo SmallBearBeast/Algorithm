@@ -53,6 +53,10 @@ public class SolutionUtil {
     }
 
     public static <T> void print(T data) {
+        if (data instanceof ListNode) {
+            System.out.println(toListNodeStr((ListNode) data));
+            return;
+        }
         System.out.println(data);
     }
 }

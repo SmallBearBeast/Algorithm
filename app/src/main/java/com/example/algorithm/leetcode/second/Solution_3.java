@@ -80,6 +80,7 @@ public class Solution_3 {
         int[] hashes = new int[128];
         int start = 0;
         int length = s.length();
+        // 不能使用0作为hash桶空的标识，因为数组第一个下标是0。
         Arrays.fill(hashes, -1);
         int longestSubStrLength = 0;
         for (int i = 0; i < length; i++) {
