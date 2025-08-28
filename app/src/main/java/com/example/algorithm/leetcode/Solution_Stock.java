@@ -2,7 +2,7 @@ package com.example.algorithm.leetcode;
 
 public class Solution_Stock {
     public static void main(String[] args) {
-        Solution_Module solution = new Solution_Module();
+        Algorithm_Module solution = new Algorithm_Module();
     }
 
     public int minDistance(String word1, String word2) {
